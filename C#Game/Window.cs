@@ -1,7 +1,3 @@
-// Open a simple window for drawing in C#
-// September 2024
-// Aline Normoyle
-
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
