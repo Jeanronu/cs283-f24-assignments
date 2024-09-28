@@ -285,9 +285,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4552495061738278205, guid: a7ea8cccbff07af42beb445493351724, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 351
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552495061738278205, guid: a7ea8cccbff07af42beb445493351724, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 354
+      objectReference: {fileID: 0}
     - target: {fileID: 5284952312879568345, guid: a7ea8cccbff07af42beb445493351724, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898159366113426178, guid: a7ea8cccbff07af42beb445493351724, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -266
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898159366113426178, guid: a7ea8cccbff07af42beb445493351724, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898159366113426178, guid: a7ea8cccbff07af42beb445493351724, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 437
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898159366113426181, guid: a7ea8cccbff07af42beb445493351724, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8422710533844251087, guid: a7ea8cccbff07af42beb445493351724, type: 3}
       propertyPath: m_LocalPosition.x

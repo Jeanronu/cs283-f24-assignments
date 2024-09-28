@@ -15,7 +15,7 @@ public class Tour : MonoBehaviour
 
     void Start()
     {
-        // Get the camera transform (assuming it's a child of this GameObject)
+        // Get the camera transform 
         cameraTransform = GetComponentInChildren<Camera>().transform;
 
         // Make the cursor invisible at the start
