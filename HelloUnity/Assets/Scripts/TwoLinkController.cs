@@ -49,6 +49,8 @@ public class TwoLinkController : MonoBehaviour
 
             // Calculate the elbow/middlejoint angle
             float angleMiddle = Mathf.Acos((a * a + b * b - c * c) / (2 * a * b)) * Mathf.Rad2Deg;
+            // Calculate the angle at the base joint
+            float angleBase = Mathf.Atan2(target.position.y - baseJoint.position.y, target.position.x - baseJoint.position.x) * Mathf.Rad2Deg;
 
             // Apply the elbow rotation by rotating the local Z axis
             middleJoint.localRotation = Quaternion.Euler(0, 0, angleMiddle - 90f);  // Subtracting 90 to align it properly
@@ -57,6 +59,8 @@ public class TwoLinkController : MonoBehaviour
             Debug.DrawLine(baseJoint.position, middleJoint.position, Color.red);
             Debug.DrawLine(middleJoint.position, endEffector.position, Color.blue);
             Debug.DrawLine(endEffector.position, target.position, Color.green);
+
+            Debug.Log($"Base Joint Angle: {angleBase}, Middle Joint Angle: {angleMiddle}, Target Position: {target.position}");
         }
     }
 }

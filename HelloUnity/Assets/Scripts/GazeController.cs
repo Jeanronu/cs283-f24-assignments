@@ -12,14 +12,21 @@ public class GazeController : MonoBehaviour
             // Vector from the joint to the target
             Vector3 directionToTarget = target.position - lookJoint.position;
 
-            // Ensure the direction vector is normalized
-            directionToTarget.Normalize();
+            // Calculate the direction from the lookJoint to the target
+            Vector3 r = lookJoint.forward;
+            Vector3 e = directionToTarget;
 
-            // Calculate the target rotation based on the direction to the target
-            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+            // Calculate the angle of rotation
+            float phi = Mathf.Atan2(Vector3.Cross(r, e).magnitude, Vector3.Dot(r, r) + Vector3.Dot(r, e));
 
-            // Rotate the lookJoint towards the target using Slerp
-            lookJoint.rotation = Quaternion.Slerp(lookJoint.rotation, targetRotation, Time.deltaTime * 5f);
+            // Calculate the axis of rotation
+            Vector3 rotationAxis = Vector3.Cross(r, e).normalized;
+
+            // Compute the rotation
+            Quaternion computedRotation = Quaternion.AngleAxis(phi * Mathf.Rad2Deg, rotationAxis);
+
+            // Apply the computed rotation to the lookJoint's parent
+            lookJoint.parent.rotation = computedRotation * lookJoint.parent.rotation;
 
             // Draw a debug line between the look joint and the target
             Debug.DrawLine(lookJoint.position, target.position, Color.red);
