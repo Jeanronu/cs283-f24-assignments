@@ -2,7 +2,8 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float walkSpeed = 5f;
+    public float runSpeed = 10f; // Speed when running
     public float rotationSpeed = 120f; // Speed at which the character rotates
     public float jumpSpeed = 5f;
     public float jumpButtonGracePeriod = 0.2f;
@@ -28,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        // Check if the Shift key is pressed to toggle between walking and running
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        float currentSpeed = isRunning ? runSpeed : walkSpeed;
+
+        // Update Animator parameters
+        animator.SetBool("running", isRunning);
+
         // Continuous rotation without locking the direction
         if (horizontalInput != 0)
         {
@@ -37,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Movement always in the direction the character is currently facing
         Vector3 movementDirection = transform.forward * verticalInput;
-        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * currentSpeed;
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
@@ -47,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             lastGroundedTime = Time.time;
 
             // Reset jump animations when landing
-            animator.SetBool("jump", false);
+            animator.SetBool("jumping", false);
             animator.SetBool("runningjump", false);
         }
 
@@ -58,13 +66,13 @@ public class PlayerMovement : MonoBehaviour
             ySpeed = jumpSpeed;  // Apply jump force
 
             // Check if the character is moving to differentiate jump animations
-            if (verticalInput != 0)
+            if (verticalInput != 0 || isRunning)
             {
                 animator.SetBool("runningjump", true);  // Running jump animation
             }
             else
             {
-                animator.SetBool("jump", true);  // Stationary jump animation
+                animator.SetBool("jumping", true);  // Stationary jump animation
             }
         }
 
@@ -91,14 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(velocity * Time.deltaTime);
 
-        // Set animator's IsMoving parameter based on movement
-        if (verticalInput != 0)
-        {
-            animator.SetBool("IsMoving", true);
-        }
-        else
-        {
-            animator.SetBool("IsMoving", false);
-        }
+        // Set animator's walking parameter based on movement
+        animator.SetBool("walking", verticalInput != 0);
     }
 }
