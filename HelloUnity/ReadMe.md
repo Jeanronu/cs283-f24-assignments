@@ -60,14 +60,14 @@ UnderWater effect: https://www.bing.com/videos/riverview/relatedvideo?q=underwat
 # Assigment 6 Bezier Faster Stronger
 ## Path Following
 ### Follow Path Linear
-[Watch Follow Path Linear](FollowPathLinearUnity.mp4)
+https://github.com/user-attachments/assets/0592f612-eb8b-4e15-805d-4cfc885d54cb
 
 ### Follow Path Cubic
-[Watch Follow Path Cubic](FollowPathCubicUnity.mp4)
+https://github.com/user-attachments/assets/348dbf41-be9a-48c0-9f31-624b03a6f863
 
 ## IK Controllers
 ### Gaze Controller
-[Watch Gaze Controller](GazeScriptUnity.mp4)
+https://github.com/user-attachments/assets/588d5804-152e-4ec1-ae89-7488ddc96811
 
 ### Two-Link Controller
 [Watch Two-Link Controller](TwoLinksScriptUnity.mp4) 
