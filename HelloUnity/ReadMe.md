@@ -1,7 +1,13 @@
 # Lab 3:
 Main Launch area is the city and the level will be create it at the island.
 
-Video: https://github.com/user-attachments/assets/a8c67198-0b1f-40db-8f2b-b7967ca0b490
+Video: 
+
+
+https://github.com/user-attachments/assets/867d7281-e223-4535-b83e-c5f9c0289553
+
+
+
 ![image](https://github.com/user-attachments/assets/dc4a5c2b-d0e8-44f3-919e-df3a5f147077)
 ![alt text](image.png)
 ![alt text](image-1.png)
@@ -46,16 +52,16 @@ UnderWater effect: https://www.bing.com/videos/riverview/relatedvideo?q=underwat
 # Assigment 5 Camera + Character
 
   ## Player Controls Script
-    https://github.com/user-attachments/assets/2bf719b2-629c-42d9-8373-ba372f784499
+
+https://github.com/user-attachments/assets/4155051c-ab65-485f-82a9-65040851c1f9
 
   ### Rigid Camera
 
-    https://github.com/user-attachments/assets/2e45ddbe-df73-4e84-8424-fafc2e527e9e
+https://github.com/user-attachments/assets/ef7c54d6-eb93-41b1-a5db-93761b427311
 
   ### Sprint Camera
 
-    https://github.com/user-attachments/assets/8fca535e-9bb4-4464-8972-a93b169f47e8
-
+https://github.com/user-attachments/assets/d90cf857-f8ec-4c01-ae99-ebc2e3752273
 
 # Assigment 6 Bezier Faster Stronger
 ## Path Following
@@ -70,9 +76,15 @@ https://github.com/user-attachments/assets/348dbf41-be9a-48c0-9f31-624b03a6f863
 https://github.com/user-attachments/assets/588d5804-152e-4ec1-ae89-7488ddc96811
 
 ### Two-Link Controller
-[Watch Two-Link Controller](TwoLinksScriptUnity.mp4) 
-[Watch Two-Link Each Rotation](Two-LinkEachRotation.mp4)
 
+https://github.com/user-attachments/assets/ce3a69b4-b83b-4ce1-9fd9-a015be40a7ed
+
+
+
+https://github.com/user-attachments/assets/76c17c9a-401d-48e2-8b08-4e007934ba31
 
 
 # Lab 7 Motion
+
+https://github.com/user-attachments/assets/ddf87417-72d5-40cf-bb96-6a657020b15e
+
