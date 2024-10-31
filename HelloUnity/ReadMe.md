@@ -95,9 +95,9 @@ https://github.com/user-attachments/assets/b35b9eb8-18a8-470f-8193-f0210555d843
 
 ### Notes:
   The "CollectionGame" Script was seperated into 3 different Scripts for simplicity at time of setting up the unity game:
-  - Coin.cs
-  - Monedero.cs
-  - Monedero UI.cs
+  - CollectionGame.cs
+  - Monedero.cs -> Adds up coins when pick them up
+  - Monedero UI.cs -> Show total on the UI by calling Monedero.cs
 
 ### Assets added
   - https://assetstore.unity.com/packages/3d/props/coin-treasure-bundle-with-animation-3d-250070
