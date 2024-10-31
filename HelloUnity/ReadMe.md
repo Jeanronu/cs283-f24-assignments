@@ -88,3 +88,17 @@ https://github.com/user-attachments/assets/76c17c9a-401d-48e2-8b08-4e007934ba31
 
 https://github.com/user-attachments/assets/ddf87417-72d5-40cf-bb96-6a657020b15e
 
+
+# Lab 8 Collecting Items
+
+https://github.com/user-attachments/assets/b35b9eb8-18a8-470f-8193-f0210555d843
+
+### Notes:
+  The "CollectionGame" Script was seperated into 3 different Scripts for simplicity at time of setting up the unity game:
+  - Coin.cs
+  - Monedero.cs
+  - Monedero UI.cs
+
+### Assets added
+  - https://assetstore.unity.com/packages/3d/props/coin-treasure-bundle-with-animation-3d-250070
+  - https://assetstore.unity.com/packages/3d/props/free-mining-pack-low-poly-ores-gems-tools-props-189962 (Not Used)
