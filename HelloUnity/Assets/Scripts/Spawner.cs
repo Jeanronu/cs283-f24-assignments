@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public float range = 5f;       // Radius within which coins will spawn
     public int maxSpawnCount = 10; // Max number of coins that can be spawned at once
 
-    private List<Coin> spawnedCoins = new List<Coin>();
+    private List<CollectionGame> spawnedCoins = new List<CollectionGame>();
 
     void Start()
     {
@@ -24,15 +24,15 @@ public class Spawner : MonoBehaviour
     {
         Vector3 randomPosition = GetRandomPosition();
         GameObject newCoinObject = Instantiate(coinPrefab, randomPosition, Quaternion.identity);
-        Coin newCoin = newCoinObject.GetComponent<Coin>();
-        
+        CollectionGame newCoin = newCoinObject.GetComponent<CollectionGame>();
+
         // Listen to the OnCollected event to respawn the coin
         newCoin.OnCollected += RespawnCoin;
         spawnedCoins.Add(newCoin);
     }
 
     // Method to respawn a coin that has been picked up
-    private void RespawnCoin(Coin coin)
+    private void RespawnCoin(CollectionGame coin)
     {
         Vector3 randomPosition = GetRandomPosition();
         coin.transform.position = randomPosition;

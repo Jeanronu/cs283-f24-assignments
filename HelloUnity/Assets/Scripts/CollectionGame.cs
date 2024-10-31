@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(AudioSource))]
-public class Coin : MonoBehaviour
+public class CollectionGame : MonoBehaviour
 {
     public float disappearDuration = 0.5f; // Duration of the disappearing animation
     public float rotationSpeed = 500f;     // Speed of spinning animation during disappear
@@ -24,7 +24,7 @@ public class Coin : MonoBehaviour
     private float jumpOffset;                // Offset for the jumping movement
 
     // Event triggered when the coin is collected
-    public event Action<Coin> OnCollected;
+    public event Action<CollectionGame> OnCollected;
 
     void Start()
     {
