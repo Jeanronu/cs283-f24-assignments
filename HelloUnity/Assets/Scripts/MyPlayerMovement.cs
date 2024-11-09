@@ -3,15 +3,15 @@
 public class PlayerMovement : MonoBehaviour
 {
     public float walkSpeed = 5f;
-    public float runSpeed = 10f; // Speed when running
-    public float rotationSpeed = 120f; // Speed at which the character rotates
+    public float runSpeed = 10f;
     public float jumpSpeed = 5f;
     public float jumpButtonGracePeriod = 0.2f;
 
-    public AudioClip walkSound;     // Sound played when walking
-    public AudioClip runSound;      // Sound played when running
-    public AudioClip jumpSound;     // Sound played when jumping
-    public AudioClip breath;         // Breath sound when idle
+    public AudioClip walkSound;
+    public AudioClip runSound;
+    public AudioClip jumpSound;
+    public AudioClip breath;
+
     private AudioSource audioSource;
     private Animator animator;
     private CharacterController characterController;
@@ -21,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private float? jumpButtonPressedTime;
     private bool isWalking = false;
     private bool isRunning = false;
+    private bool isJumping = false;  // New variable to control jump animation state
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -31,64 +31,56 @@ public class PlayerMovement : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Check if the Shift key is pressed to toggle between walking and running
         isRunning = Input.GetKey(KeyCode.LeftShift);
         float currentSpeed = isRunning ? runSpeed : walkSpeed;
 
-        // Update Animator parameters
         animator.SetBool("running", isRunning);
-        animator.SetBool("walking", verticalInput != 0);
+        animator.SetBool("walking", verticalInput != 0 || horizontalInput != 0);
 
-        // Continuous rotation without locking the direction
-        if (horizontalInput != 0)
-        {
-            // Rotate around the y-axis continuously
-            transform.Rotate(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
-        }
-
-        // Movement always in the direction the character is currently facing
-        Vector3 movementDirection = transform.forward * verticalInput;
+        Vector3 movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * currentSpeed;
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
-        // Ground check
         if (characterController.isGrounded)
         {
             lastGroundedTime = Time.time;
 
-            // Reset jump animations when landing
-            animator.SetBool("jumping", false);
-            animator.SetBool("runningjump", false);
+            // Only reset animations after a jump if `isJumping` was true
+            if (isJumping)
+            {
+                isJumping = false;
+                animator.SetBool("jumping", false);
+                animator.SetBool("runningjump", false);
+            }
         }
 
-        // Check if the jump button is pressed and if the character is grounded
+        // Jump handling
         if (Input.GetButtonDown("Jump") && characterController.isGrounded)
         {
             jumpButtonPressedTime = Time.time;
-            ySpeed = jumpSpeed;  // Apply jump force
+            ySpeed = jumpSpeed;
 
-            // Play jump sound
             audioSource.PlayOneShot(jumpSound);
 
-            // Check if the character is moving to differentiate jump animations
+            // Trigger jump animations
+            isJumping = true;
             if (verticalInput != 0 || isRunning)
             {
-                animator.SetBool("runningjump", true);  // Running jump animation
+                animator.SetBool("runningjump", true);
             }
             else
             {
-                animator.SetBool("jumping", true);  // Stationary jump animation
+                animator.SetBool("jumping", true);
             }
         }
 
-        // Handle the jump grace period logic
+        // Jump grace period
         if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
         {
             characterController.stepOffset = originalStepOffset;
@@ -96,9 +88,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
             {
-                ySpeed = jumpSpeed;  // Continue to apply jump speed
-                jumpButtonPressedTime = null;  // Reset jump button press time
-                lastGroundedTime = null;  // Reset last grounded time
+                ySpeed = jumpSpeed;
+                jumpButtonPressedTime = null;
+                lastGroundedTime = null;
             }
         }
         else
@@ -111,44 +103,39 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(velocity * Time.deltaTime);
 
-        // Handle walking and running sounds
-        HandleMovementSounds(verticalInput);
+        HandleMovementSounds(verticalInput, horizontalInput);
     }
 
-    private void HandleMovementSounds(float verticalInput)
+    private void HandleMovementSounds(float verticalInput, float horizontalInput)
     {
-        // Determine walking or running state
-        if (verticalInput != 0)
+        if (verticalInput != 0 || horizontalInput != 0)
         {
             if (isRunning)
             {
-                // If running, play running sound and stop walking sound
                 if (audioSource.clip != runSound)
                 {
-                    audioSource.clip = runSound; // Set running sound
-                    audioSource.loop = true; // Loop the running sound
+                    audioSource.clip = runSound;
+                    audioSource.loop = true;
                     audioSource.Play();
                 }
             }
             else
             {
-                // If walking, play walking sound and stop running sound
                 if (audioSource.clip != walkSound)
                 {
-                    audioSource.clip = walkSound; // Set walking sound
-                    audioSource.loop = true; // Loop the walking sound
+                    audioSource.clip = walkSound;
+                    audioSource.loop = true;
                     audioSource.Play();
                 }
             }
         }
         else
         {
-            // Stop any sound when not moving
             if (audioSource.isPlaying)
             {
                 audioSource.Stop();
-                audioSource.clip = breath; // Set breath sound
-                audioSource.Play(); // Play breath sound when idle
+                audioSource.clip = breath;
+                audioSource.Play();
             }
         }
     }
