@@ -102,3 +102,16 @@ https://github.com/user-attachments/assets/b35b9eb8-18a8-470f-8193-f0210555d843
 ### Assets added
   - https://assetstore.unity.com/packages/3d/props/coin-treasure-bundle-with-animation-3d-250070
   - https://assetstore.unity.com/packages/3d/props/free-mining-pack-low-poly-ores-gems-tools-props-189962 (Not Used)
+
+# Lab 9 NavMesh & NPC
+
+https://github.com/user-attachments/assets/1944e082-f5af-4d04-868a-6a79d5c7f2c4
+
+https://github.com/user-attachments/assets/5194ec35-adf9-4992-bdcf-fda658b595fa
+
+### Notes:
+- There is a New Script "MouseLook" which is to make the camera follow the mouse, its different to the flythorugh camera in because in the fly camera the camera moves with the character, MouseLook just rotate the object.
+- "MyPlayerMovement" script, or controller; was modified so instead of rotate when clicking "a" or "d", now it walks to the side (Animations need to be added)
+  
+### Assets:
+- https://assetstore.unity.com/packages/3d/characters/creatures/kawaii-slimes-221172#content
