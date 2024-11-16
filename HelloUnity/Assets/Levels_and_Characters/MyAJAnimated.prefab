@@ -326,7 +326,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 5
   runSpeed: 15
-  rotationSpeed: 120
   jumpSpeed: 5
   jumpButtonGracePeriod: 0.2
   walkSound: {fileID: 0}

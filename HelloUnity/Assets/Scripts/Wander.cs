@@ -8,7 +8,7 @@ public class Wander : MonoBehaviour
     public float wanderRadius = 10f; // Radius within which the NPC will pick a new random destination
     public float minDistanceToTarget = 1f; // Minimum distance to consider the target "reached"
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class Wander : MonoBehaviour
         }
     }
 
-    void SetNewDestination()
+    public void SetNewDestination()
     {
         // Generate a random direction within the specified radius
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;

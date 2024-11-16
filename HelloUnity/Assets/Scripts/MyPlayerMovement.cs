@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip walkSound;
     public AudioClip runSound;
     public AudioClip jumpSound;
-    public AudioClip breath;
 
     private AudioSource audioSource;
     private Animator animator;
@@ -51,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         {
             lastGroundedTime = Time.time;
 
-            // Only reset animations after a jump if `isJumping` was true
             if (isJumping)
             {
                 isJumping = false;
@@ -68,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
 
             audioSource.PlayOneShot(jumpSound);
 
-            // Trigger jump animations
             isJumping = true;
             if (verticalInput != 0 || isRunning)
             {
@@ -134,8 +131,6 @@ public class PlayerMovement : MonoBehaviour
             if (audioSource.isPlaying)
             {
                 audioSource.Stop();
-                audioSource.clip = breath;
-                audioSource.Play();
             }
         }
     }
