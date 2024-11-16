@@ -115,3 +115,12 @@ https://github.com/user-attachments/assets/5194ec35-adf9-4992-bdcf-fda658b595fa
   
 ### Assets:
 - https://assetstore.unity.com/packages/3d/characters/creatures/kawaii-slimes-221172#content
+
+
+# Lab 10 Behavior Trees
+
+https://github.com/user-attachments/assets/89b1b25d-69ec-45c8-95e8-6bf29804a664
+
+### Assets:
+- https://www.mixamo.com/#/?page=1&type=Character
+
